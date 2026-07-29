@@ -51,7 +51,7 @@ public sealed class OrderService : IOrderService
         }
 
         var payment = await _payments.PayAsync(order.Id, order.CalculateTotal(), cancellationToken);
-        order.RegisterPayment(payment);
+//        order.RegisterPayment(payment);
 
 
       //  await _orders.AddAsync(order, cancellationToken);
