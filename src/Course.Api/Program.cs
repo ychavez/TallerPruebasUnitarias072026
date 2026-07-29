@@ -16,6 +16,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+if (!app.Environment.IsEnvironment("Testing"))
+{
+    app.UseHttpsRedirection();  
+}
+
+if (app.Environment.IsEnvironment("Testing"))
+{
+    builder.Logging.ClearProviders();
+    builder.Logging.AddConsole();
+}
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 

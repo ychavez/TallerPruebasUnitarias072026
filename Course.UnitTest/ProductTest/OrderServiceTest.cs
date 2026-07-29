@@ -4,9 +4,6 @@ using Course.Domain.Entities;
 using Course.Domain.Enums;
 using FluentAssertions;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Course.UnitTest.ProductTest
 {
