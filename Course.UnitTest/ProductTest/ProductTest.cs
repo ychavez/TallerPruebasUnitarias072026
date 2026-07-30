@@ -10,20 +10,24 @@ namespace Course.UnitTest.ProductTest
     public class ProductTest
     {
 
-        [Fact]
-        public void DecreaseStock_WhenQuantityIsAvailable_ShouldUpdateStock() 
+        [Theory]
+        [InlineData("Teclado", 10)]
+        [InlineData("Mouse", 5)]
+        public void DecreaseStock_WhenQuantityIsAvailable_ShouldUpdateStock(string producto, int cantidad) 
         {
 
             //Arrange
-            var product = new Product(Guid.NewGuid(), "Teclado", 100m, 10);
+            var product = new Product(Guid.NewGuid(), producto, 100m, cantidad);
 
             //Act
             product.DecreaseStock(3);
 
             //Assert
-            product.Stock.Should().Be(7);
+            product.Stock.Should().Be(cantidad - 3);
         
         }
+
+
 
         [Fact]
         public void DecreaseStock_WhenQuantityExceedsStock_ShouldThrowDomainException() 

@@ -80,6 +80,10 @@ namespace Course.E2ETest
             await Page.Locator("[data-testid='create-order']").ClickAsync();
             await Expect(Page.Locator("[data-testid='message-success']")).ToContainTextAsync("Pedido creado correctamente.");
 
+            
+
+
+
             var createdOrderId = await Page.Locator("[data-testid='order-id']").InnerTextAsync();
 
             //Act
