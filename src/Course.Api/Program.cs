@@ -8,6 +8,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 builder.Services.AddCourseInfrastructure();
 
+if (builder.Environment.IsEnvironment("Testing"))
+{
+    builder.Logging.ClearProviders();
+    builder.Logging.AddConsole();
+}
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -21,13 +27,6 @@ if (!app.Environment.IsEnvironment("Testing"))
     app.UseHttpsRedirection();  
 }
 
-if (app.Environment.IsEnvironment("Testing"))
-{
-    builder.Logging.ClearProviders();
-    builder.Logging.AddConsole();
-}
-
-app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapHealthChecks("/health");
